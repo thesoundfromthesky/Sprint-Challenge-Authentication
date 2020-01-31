@@ -1,6 +1,7 @@
 const request = require("supertest");
 const server = require("./server.js");
 const db = require("../database/dbConfig");
+const jwt = require("jsonwebtoken");
 
 describe("POST /api/auth/register", () => {
   beforeEach(async () => {
@@ -34,8 +35,8 @@ describe("POST /api/auth/login", () => {
     const response = await request(server)
       .post("/api/auth/login")
       .send(expectedBody);
-
-    expect(response.body.token).toBeTruthy();
+    const verify = jwt.verify(response.body.token, process.env.JWT_SECRET);
+    expect(expectedBody.username).toBe(verify.username);
   });
 
   it("Should get success status code", async () => {

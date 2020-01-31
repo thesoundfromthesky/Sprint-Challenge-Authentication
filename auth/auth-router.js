@@ -2,7 +2,6 @@ const router = require("express").Router();
 const db = require("../database/dbConfig");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 // - [ ] Implement the `register` and `login` functionality inside `/auth/auth-router.js`.
 // A `user` has `username` and `password`. Both properties are required.
 router.post("/register", async (req, res) => {

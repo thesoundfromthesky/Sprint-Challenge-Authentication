@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
       });
     } else {
       res.status(201).json({
-        statusCode: 201,
+        statusCode: 400,
         message: "Create Fail"
       });
     }
